@@ -13,11 +13,8 @@ import torchvision.transforms as transforms
 from torch.utils.data import Dataset, DataLoader
 
 # https://pystyle.info/pytorch-train-classification-problem-using-a-pretrained-model/
-def get_device(gpu_id=-1):
-    if gpu_id >= 0 and torch.cuda.is_available():
-        return torch.device("cuda", gpu_id)
-    else:
-        return torch.device("cpu")
+def get_device():
+    return torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
 
 def replace_out_features(model, out_features=3):
     """replace output layer
